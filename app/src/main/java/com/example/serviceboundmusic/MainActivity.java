@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 new Intent(MainActivity.this,
                 MyService.class);
 
+
+
+
         btOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

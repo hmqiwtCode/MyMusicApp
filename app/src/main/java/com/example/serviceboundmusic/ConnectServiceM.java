@@ -1,13 +1,18 @@
 package com.example.serviceboundmusic;
 
+import android.app.Application;
 import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-public class ConnectServiceM {
+public class ConnectServiceM  extends Application{
     private static MyService myService;
     public static boolean isBound = false;
     private static ServiceConnection connection;
+    public static Intent intent = null;
+
 
     public static synchronized ServiceConnection getService() {
         if (connection == null) {
@@ -26,6 +31,8 @@ public class ConnectServiceM {
         }
         return connection;
     }
+
+
 
 
 

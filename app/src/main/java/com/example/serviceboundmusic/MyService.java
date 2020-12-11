@@ -19,18 +19,18 @@ public class MyService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d("ServiceDemo", "Đã gọi onCreate()");
-
-        myPlayer = new MyPlayer(this);
         binder = new MyBinder(); // do MyBinder được extends Binder
 
     }
+
+
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         Log.d("ServiceDemo", "Đã gọi onBind()");
+        myPlayer = new MyPlayer(this, (Music) intent.getSerializableExtra("music"));
         myPlayer.play();
-        // trả về đối tượng binder cho ActivityMain
         return binder;
 
     }
@@ -63,15 +63,15 @@ public class MyService extends Service {
     }
 
 }
-// Xây dựng một đối tượng riêng để chơi nhạc
+
 class MyPlayer {
-    // đối tượng này giúp phát một bài nhạc
+
     private MediaPlayer mediaPlayer;
 
-    public MyPlayer(Context context) {
+    public MyPlayer(Context context,Music music) {
         // Nạp bài nhạc vào mediaPlayer
         mediaPlayer = MediaPlayer.create(
-                context, R.raw.buonvuongmauao_nguyenhung);
+                context, music.getId());
         // Đặt chế độ phát lặp lại liên tục
         mediaPlayer.setLooping(true);
     }
