@@ -153,7 +153,7 @@ public class ListMusicFragment extends Fragment implements MusicListAdapter.OnIt
                 if (ConnectServiceM.isBound){
                     pauseAudio();
                 }else{
-                    resumeAudio(ConnectServiceM.intent);
+                   // resumeAudio(ConnectServiceM.intent);
                 }
 
             }
